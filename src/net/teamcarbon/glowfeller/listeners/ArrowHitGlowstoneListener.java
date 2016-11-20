@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ArrowHitGlowstoneListener implements Listener
-{
+public class ArrowHitGlowstoneListener implements Listener {
 
 	private final BlockFace[] FACES = {BlockFace.UP, BlockFace.DOWN, BlockFace.NORTH,
 			BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST};
@@ -22,8 +21,7 @@ public class ArrowHitGlowstoneListener implements Listener
 
 	@SuppressWarnings("deprecation")
 	@EventHandler(ignoreCancelled = true)
-	public void arrowHitGlowstone(ArrowHitGlowstoneEvent e)
-	{
+	public void arrowHitGlowstone(ArrowHitGlowstoneEvent e) {
 		Block hit = e.getHitBlock();
 		e.getArrow().remove();
 		hit.breakNaturally();
@@ -36,8 +34,7 @@ public class ArrowHitGlowstoneListener implements Listener
 
 		// Iterate over each block face of the hit block
 		OUTER:
-		for (BlockFace face : FACES)
-		{
+		for (BlockFace face : FACES) {
 			Block rel = e.getHitBlock().getRelative(face);
 			// Check that the starter block on this face isn't already stored in another list
 			for (BlockFace f : FACES)
@@ -54,11 +51,9 @@ public class ArrowHitGlowstoneListener implements Listener
 
 		// Now lets iterate over the stored lists of blocks to check if they're attached to nether-blocks
 		OUTER2:
-		for (BlockFace face : blockLists.keySet())
-		{
+		for (BlockFace face : blockLists.keySet()) {
 			// Make sure the block lists map has a list for this block face
-			if (blockLists.containsKey(face) && blockLists.get(face) != null)
-			{
+			if (blockLists.containsKey(face) && blockLists.get(face) != null) {
 				// Iterate over each block in this list
 				for (Block block : blockLists.get(face))
 					// If it's connected to a nether-block, back out to the outer loop and check the next list
@@ -67,11 +62,9 @@ public class ArrowHitGlowstoneListener implements Listener
 
 
 				// No blocks in the list are connected to nether blocks by this point assumedly
-				for (Block block : blockLists.get(face))
-				{
+				for (Block block : blockLists.get(face)) {
 					// Final double-check that we're only affecting glowstone
-					if (block.getType() == Material.GLOWSTONE)
-					{
+					if (block.getType() == Material.GLOWSTONE) {
 						// Set the block to air and spawn a falling glowstone
 						block.setType(Material.AIR);
 						e.getArrow().getWorld().spawnFallingBlock(block.getLocation(), Material.GLOWSTONE, (byte) 0x0);
@@ -92,8 +85,7 @@ public class ArrowHitGlowstoneListener implements Listener
 	 * @param types The types of blocks to check for around the Source
 	 * @return Returns true if any block of the specified types was found connected to the source block
 	 */
-	private boolean connectedTo(Block source, Material ... types)
-	{
+	private boolean connectedTo(Block source, Material ... types) {
 		for (BlockFace face : FACES) {
 			for (Material m : types) {
 				if (source.getRelative(face).getType() == m) {
@@ -111,18 +103,15 @@ public class ArrowHitGlowstoneListener implements Listener
 	 * @param iterated List of Blocks already iterated over, to prevent iterating over them again
 	 * @return Returns a List of blocks attached to the source glowstone block
 	 */
-	private List<Block> iterateGlowstone(Block source, Block ignore, int depth, List<Block> iterated)
-	{
-		iterated = (iterated == null) ? new ArrayList<Block>() : iterated;
+	private List<Block> iterateGlowstone(Block source, Block ignore, int depth, List<Block> iterated) {
+		iterated = (iterated == null) ? new ArrayList<>() : iterated;
 		List<Block> blocks = new ArrayList<>();
 		if (depth > 30 || source.getType() != Material.GLOWSTONE || iterated.contains(source)) return blocks;
 		iterated.add(source);
 		blocks.add(source);
-		for (BlockFace face : FACES)
-		{
+		for (BlockFace face : FACES) {
 			Block rel = source.getRelative(face);
-			if (rel != ignore)
-			{
+			if (rel != ignore) {
 				List<Block> list = iterateGlowstone(rel, source, depth + 1, iterated);
 				for (Block b : list) if (!blocks.contains(b)) blocks.addAll(list);
 			}

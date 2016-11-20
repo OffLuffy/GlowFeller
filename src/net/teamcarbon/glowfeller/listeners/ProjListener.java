@@ -1,7 +1,7 @@
 package net.teamcarbon.glowfeller.listeners;
 
-import net.teamcarbon.glowfeller.GlowFeller;
 import net.teamcarbon.glowfeller.events.ArrowHitGlowstoneEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.World.Environment;
@@ -37,7 +37,7 @@ public class ProjListener implements Listener
 		if (hit != null && hit.getType() == Material.GLOWSTONE)
 		{
 			ArrowHitGlowstoneEvent ahge = new ArrowHitGlowstoneEvent(hit, a);
-			GlowFeller.pm.callEvent(ahge);
+			Bukkit.getPluginManager().callEvent(ahge);
 		}
 	}
 }
