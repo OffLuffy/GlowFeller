@@ -1,6 +1,6 @@
-package net.teamcarbon.glowfeller.listeners;
+package me.offluffy.GlowFeller.listeners;
 
-import net.teamcarbon.glowfeller.events.ArrowHitGlowstoneEvent;
+import me.offluffy.GlowFeller.events.ArrowHitGlowstoneEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;

@@ -1,6 +1,6 @@
-package net.teamcarbon.glowfeller.listeners;
+package me.offluffy.GlowFeller.listeners;
 
-import net.teamcarbon.glowfeller.events.ArrowHitGlowstoneEvent;
+import me.offluffy.GlowFeller.events.ArrowHitGlowstoneEvent;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -30,7 +30,7 @@ public class ArrowHitGlowstoneListener implements Listener {
 
 		// Map of lists. Each list corresponds to a group of glowstone connected to each face of the hit block
 		// These may be null if there is no glowstone on that face.
-		HashMap<BlockFace, List<Block>> blockLists = new HashMap<>();
+		HashMap<BlockFace, List<Block>> blockLists = new HashMap<BlockFace, List<Block>>();
 
 		// Iterate over each block face of the hit block
 		OUTER:
@@ -42,7 +42,7 @@ public class ArrowHitGlowstoneListener implements Listener {
 					continue OUTER;
 			// Store the glowstone blocks attached to this face of the hit block (but not the hit block itself)
 			List<Block> list = iterateGlowstone(rel, hit, 0, null);
-			if (list.contains(hit)) list.remove(hit);
+			list.remove(hit);
 			blockLists.put(face, list);
 		}
 
@@ -104,8 +104,8 @@ public class ArrowHitGlowstoneListener implements Listener {
 	 * @return Returns a List of blocks attached to the source glowstone block
 	 */
 	private List<Block> iterateGlowstone(Block source, Block ignore, int depth, List<Block> iterated) {
-		iterated = (iterated == null) ? new ArrayList<>() : iterated;
-		List<Block> blocks = new ArrayList<>();
+		iterated = (iterated == null) ? new ArrayList<Block>() : iterated;
+		List<Block> blocks = new ArrayList<Block>();
 		if (depth > 30 || source.getType() != Material.GLOWSTONE || iterated.contains(source)) return blocks;
 		iterated.add(source);
 		blocks.add(source);

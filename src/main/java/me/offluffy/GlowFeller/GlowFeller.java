@@ -1,7 +1,7 @@
-package net.teamcarbon.glowfeller;
+package me.offluffy.GlowFeller;
 
-import net.teamcarbon.glowfeller.listeners.ArrowHitGlowstoneListener;
-import net.teamcarbon.glowfeller.listeners.ProjListener;
+import me.offluffy.GlowFeller.listeners.ArrowHitGlowstoneListener;
+import me.offluffy.GlowFeller.listeners.ProjListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;

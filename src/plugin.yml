@@ -1,5 +1,0 @@
-name: GlowFeller
-version: 1.0.0
-description: Allows glowstone to fall when detatched from the nether ceiling via shooting it with arrows.
-author: OffLuffy
-main: net.teamcarbon.glowfeller.GlowFeller

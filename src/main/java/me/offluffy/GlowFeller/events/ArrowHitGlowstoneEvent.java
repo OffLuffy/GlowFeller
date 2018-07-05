@@ -1,4 +1,4 @@
-package net.teamcarbon.glowfeller.events;
+package me.offluffy.GlowFeller.events;
 
 import org.bukkit.block.Block;
 import org.bukkit.entity.Arrow;

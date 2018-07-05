@@ -1,0 +1,5 @@
+name: ${project.name}
+author: OffLuffy
+description: ${project.description}
+version: ${project.version}
+main: ${project.groupId}.${project.name}.${project.name}
