@@ -1,1 +1,14 @@
 language: java
+before_deploy:
+- export VER=$(cat target/*/classes/version)
+- git tag "${VER}"
+deploy:
+  provider: releases
+  api_key:
+    secure: VNmAAjyiELkUt+/AaWIiPv2scOHhuhzGc+2Ez1z3QRZyfi7fm6oSCJolb0dvA9T21UiO5XQGnKy39N9YO/iBvuyIbgRqs8qQjwQTBYUMVEFgfpCKOQo0KAuN00Jkh1gfAQFug7FLC98PtU1NKFI5dtkuGUZ56PzG8aaa1m6xDuPaIwIVUDWTHXJdH9+YievoMzJ9GfiDZuib1jNHnrD/czLytSToO0sgFUCHW0MsNt+6E1sDBVcR5S+hShOiTJyO08HFt3AjI4kQ69Bhy4kKR+KqpYCr/WtdUb6m+D5jgAZwH2ETFiemBmMlTtgFWbkKbjzTikd7DAokojjyOqk5AiQ0b9o6u/r7BkpL9xHLPolMuSEhh81vzFQNjmoSlBoyXlQGlINmPW51+2Antd7+2w6Ub75OzTiLgWGadqE3FK/WSqrX7+9zRJY64jtMHr9qzxYEnnLdj42ZIsZD2y/Rspq94uAE0YRMqL2YR06Wyn+TUMZzRB4y733J8OjscWY9sCZpkk9Qcqn7Jzc3xs0a87Mx0FaXgCkHsiArQO4zGctWbqYZL2ts7tWur0WXtp3NSsPFW38CDLjGFYwUi8fi0MaMpC64kcJJA3V47+EFDxucnNjZjCW8Jbd5rsGey+oqFCteyxVO+C6EZpKSl7ztC5fXNa8Pl/x75LsEVRBoWv4=
+  file_glob: true
+  file: "target/${VER}/GlowFeller-${VER}.jar"
+  skip_cleanup: true
+  on:
+    tags: false
+    repo: OffLuffy/GlowFeller

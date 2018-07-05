@@ -122,3 +122,7 @@ pip-log.txt
 .tox
 *.mo
 .mr.developer.cfg
+test/
+lib/
+target/
+version
