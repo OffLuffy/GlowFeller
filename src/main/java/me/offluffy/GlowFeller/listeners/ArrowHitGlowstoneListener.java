@@ -14,10 +14,20 @@ import java.util.List;
 
 public class ArrowHitGlowstoneListener implements Listener {
 
-	private final BlockFace[] FACES = {BlockFace.UP, BlockFace.DOWN, BlockFace.NORTH,
-			BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST};
-	private final Material[] NTYPES = {Material.NETHERRACK, Material.QUARTZ_ORE,
-			Material.NETHER_BRICK, Material.NETHER_BRICK_STAIRS, Material.SOUL_SAND};
+	private final BlockFace[] FACES = {
+			BlockFace.UP, BlockFace.DOWN, BlockFace.NORTH,
+			BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST
+	};
+
+	/**
+	 * All blocks found in the nether which Glowstone may be attached to. Glowstone will not fall if it finds any
+	 * of these blocks connected to any block in the mass of Glowstone.
+	 */
+	private final Material[] NTYPES = {
+			Material.NETHERRACK, Material.NETHER_QUARTZ_ORE, Material.NETHER_BRICK_SLAB,
+			Material.NETHER_BRICK, Material.NETHER_BRICK_STAIRS, Material.SOUL_SAND,
+			Material.NETHER_WART_BLOCK, Material.RED_NETHER_BRICKS, Material.OBSIDIAN
+	};
 
 	@SuppressWarnings("deprecation")
 	@EventHandler(ignoreCancelled = true)
