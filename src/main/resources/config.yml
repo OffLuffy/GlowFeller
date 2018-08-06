@@ -1,0 +1,23 @@
+# How deep to search for connected blocks to glowstone
+search-iterations: 50
+# If all shot glowstone should drop as blocks
+all-drops-blocks: false
+# If glowstone shot with spectral arrows should drop a block (Does not override all-drops-blocks)
+spectral-drops-blocks: true
+# If glowstone shot with tipped arrows should drop a block (Does not override all-drops-blocks)
+tipped-drops-blocks: false
+# If tipped-drops-blocks is true, which tipped arrow types will drop blocks
+tipped-arrow-types:
+- WEAKNESS
+- FAST_DIGGING
+# List of Nether environment Worlds to disable this plugin in.
+ignore-worlds: []
+# If glowstone blocks should fall when detached from other blocks (in the Nether only with a bow)
+use-gravity: true
+# Enables stats, displayed at https://bstats.org/plugin/bukkit/GlowFeller
+enable-metrics: true
+# Logging settings. Toggle each level to view messages sent to console in that level. Severe logging can't be disabled
+logging-settings:
+  log-debug: false
+  log-info: true
+  log-warning: true
